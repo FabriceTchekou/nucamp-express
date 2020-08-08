@@ -2,6 +2,8 @@ const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const campsiteRouter = require('./routes/campsiteRouter');
+const promotionRouter = require('./routes/promotionRouter');
+const partnerRouter = require('./routes/partnerRouter');
 
 const hostname = 'localhost';
 const port = 3000;
@@ -11,7 +13,12 @@ app.use(morgan('dev'));
 app.use(bodyParser.json());
 
 app.use('/campsites', campsiteRouter);
+app.use('/promotions', promotionRouter);
+app.use('/partners', partnerRouter);
 
+
+
+/* 
 app.get('/campsites/:campsiteId', (req, res) => {
     res.end(`Will send details of the campsite: ${req.params.campsiteId} to you`);
 });
@@ -29,7 +36,8 @@ app.put('/campsites/:campsiteId', (req, res) => {
 
 app.delete('/campsites/:campsiteId', (req, res) => {
     res.end(`Deleting campsite: ${req.params.campsiteId}`);
-});
+}); 
+*/
 
 app.use(express.static(__dirname + '/public'));
 
